@@ -1,0 +1,77 @@
+body{ margin:0; font-family:'tahoma'}
+.dropDown
+{
+    margin: 0 auto;
+    width : 100%;
+    height: auto;
+    display: inline-block;
+    background: #5846de;
+}
+
+.dropDown ul
+{
+    margin: 0; padding: 0;
+    list-style-type: none;
+    float: left;
+    display: inline-block;
+}
+
+.dropDown ul li
+{
+    position: relative;
+    margin: 0 20px 0 0;
+    float: left;
+    display: inline-block;
+}
+
+li > a:after{content: '▼';} /* we can change the symbol */
+
+li > a:only-child:after { content: ''; }
+
+.dropDown ul li a 
+{
+    padding:20px;
+    display:inline-block;
+    color:white;
+    text-decoration:none;
+}
+  
+.dropDown ul li a:hover 
+{
+    opacity:0.5;
+}
+
+.dropDown ul li ul
+{
+display: none;
+position: absolute;
+left: 0;
+background: #f2a323;
+float: left;
+}
+
+.dropDown ul li ul li
+{
+    width: 100%;
+    border-bottom: 1px solid
+    rgba(255,255,255,.3);
+}
+
+.dropDown ul li:hover ul 
+{
+    background-color: #a8d83f;
+    display:block;
+}
+
+.dropDown .tabs .tab:hover a[data-switcher]
+{
+    background-color: #f2a323;
+}
+
+.dropDown .tabs .tab.is-Active a[data-switcher]
+{
+    background-color: #f2a323;
+}
+/*The above code is for the dropDown Menu at the top */
+
+
