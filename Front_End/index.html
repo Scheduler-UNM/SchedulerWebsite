@@ -1,67 +1,126 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>
-            Scheduling Website <!-- The title of the page-->
-        </title>
-
-        <link rel="stylesheet" href="styles.css">
-    </head>
-
-    <body>
-
-        <script src ="main.js"></script>
-
-        <nav class = "dropDown">
-            <ul class = "tabs">
-                <li class = "tab is-Active">
-                    <a data-switcher data-tab ="1"> Home</a>
+    <header>
+        <nav>
+            <h1>Scheduling Website</h1>
+            <ul class="tabs">
+                <li class="tab is-active">
+                    <a data-switcher data-tab = "1">Home</a>
                 </li>
-                <li class = "tab">
-                    <a data-switcher data-tab ="2">Shifts</a>
-                    <ul>
-                        <a href="#"> All Shifts</a>
-                        <a href="#"> Open Shifts</a>
-                    </ul>
+                <li class="tab">
+                    <a data-switcher data-tab="4">All Shifts</a>
                 </li>
-
-                <li class = "tab">
-                    <a data-switcher data-tab ="3" href="admin.html"> Admin</a>
+                <li class="tab">
+                    <a data-switcher data-tab="5">Open Shifts</a>
                 </li>
-
-                <li class = "tab">
-                    <a data-switcher data-tab ="4"> Directory</a>
+                <li class="tab">
+                    <a data-switcher data-tab = "2">Admin</a>
+                </li>
+                <li class="tab">
+                    <a data-switcher data-tab = "3">Employee Directory</a>
                 </li>
             </ul>
         </nav>
+    </header>
 
-        <main>
-            <section class = "pages">
-                <div class="page is-Active" data-page = "1">
-                    <!-- Content of the Home page goes here -->
-                    <h1>Welcome to Home Page</h1>
-                </div>
+    <main>
+        <section class="pages">
+            <div class="page is-active" data-page = "1">
+                <table>
+                    <tr>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                        <th>Saturday</th>
+                    </tr>
+                    <tr>
+                        <td>8:00 am - 11:00 am</td>
+                        <td>8:00 am - 11:00 am</td>
+                        <td>8:00 am - 11:00 am</td>
+                        <td>8:00 am - 11:00 am</td>
+                        <td>8:00 am - 11:00 am</td>
+                        <td>8:00 am - 11:00 am</td>
+                    </tr>
+                    <tr>
+                      
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                    </tr>
+                    <tr>
+                        <td>11:00 am - 2:00 pm</td>
+                        <td>11:00 am - 2:00 pm</td>
+                        <td>11:00 am - 2:00 pm</td>
+                        <td>11:00 am - 2:00 pm</td>
+                        <td>11:00 am - 2:00 pm</td>
+                        <td>11:00 am - 2:00 pm</td>
+                    </tr>
+                    <tr>
+                      
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                        <td class="three">3</td>
+                    </tr>
+                    <tr>
+                        <td>2:00 pm - 5:30 pm</td>
+                        <td>2:00 pm - 5:30 pm</td>
+                        <td>2:00 pm - 5:30 pm</td>
+                        <td>2:00 pm - 5:30 pm</td>
+                        <td>2:00 pm - 5:30 pm</td>
+                        <td>2:00 pm - 5:30 pm</td>
+                    </tr>
+                
+                    <tr>
+                        <td class="threefive">3.5</td>
+                        <td class="threefive">3.5</td>
+                        <td class="threefive">3.5</td>
+                        <td class="threefive">3.5</td>
+                        <td class="threefive">3.5</td>
+                        <td class="threefive">3.5</td>
+                    </tr>
+                </table>
+                </body>
+            </div>
+            <div class="page" data-page = "2">
+                <h2>Page 2</h2>
+                <p>Welcome to the Admin page</p>
+            </div>
+            <div class="page" data-page = "3">
+                <h2>Page 3</h2>
+                <p>Welcome to the Employee Directory page</p>
+            </div>
+            <div class="page" data-page = "4">
+                <h2>Page 4</h2>
+                <p>Welcome to the Your Shift page</p>
+            </div>
 
-                <div class="page" data-page = "2">
-                    <!-- Link to shift here -->
-                    <a href="#"></a>
-                </div>
+            <div class="page" data-page = "5">
+                <h2>Page 5</h2>
+                <p>Welcome to the All Shift page</p>
+            </div>
+            <div class="page" data-page = "6">
+                <h2>Page 6</h2>
+                <p>Welcome to the Open Shift page</p>
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
 
-                <div class="page" data-page = "3">
-                    <!-- Link to Admin Page -->
-                </div>
-
-                <div class="page" data-page = "4">
-                    <!-- Link to the directory -->
-                    <p>
-                        hola
-                    </p>
-                </div>
-
-            </section>
-        </main>
-    </body>
-
+</body>
 </html>

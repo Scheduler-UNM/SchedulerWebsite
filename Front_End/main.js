@@ -7,8 +7,8 @@ window.onload = () => {
         const page_id = tab_switcher.dataset.tab;
 
         tab_switcher.addEventListener('click',() =>{
-            document.querySelector('.tabs .tab.is-Active').classList.remove('is-Active');
-            tab_switcher.parentNode.classList.add('is-Active');
+            document.querySelector('.tabs .tab.is-active').classList.remove('is-active');
+            tab_switcher.parentNode.classList.add('is-active');
 
             switchPage(page_id);
 
@@ -20,10 +20,10 @@ window.onload = () => {
 function switchPage(page_id)
 {
     console.log(page_id);
-    const current_page = document.querySelector('.pages .page.is-Active');
-    current_page.classList.remove('is-Active');
+    const current_page = document.querySelector('.pages .page.is-active');
+    current_page.classList.remove('is-active');
 
     const next_page = document.querySelector(`.pages .page[data-page = "${page_id}"]`);
-    next_page.classList.add('is-Active');
+    next_page.classList.add('is-active');
 
 }
