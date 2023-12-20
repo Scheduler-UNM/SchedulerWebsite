@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            Scheduling Website <!-- The title of the page-->
+        </title>
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+
+        <script src ="main.js"></script>
+
+        <nav class = "dropDown">
+            <ul class = "tabs">
+                <li class = "tab is-Active">
+                    <a data-switcher data-tab ="1"> Home</a>
+                </li>
+                <li class = "tab">
+                    <a data-switcher data-tab ="2">Shifts</a>
+                    <ul>
+                        <a href="#"> All Shifts</a>
+                        <a href="#"> Open Shifts</a>
+                    </ul>
+                </li>
+
+                <li class = "tab">
+                    <a data-switcher data-tab ="3" href="admin.html"> Admin</a>
+                </li>
+
+                <li class = "tab">
+                    <a data-switcher data-tab ="4"> Directory</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <section class = "pages">
+                <div class="page is-Active" data-page = "1">
+                    <!-- Content of the Home page goes here -->
+                    <h1>Welcome to Home Page</h1>
+                </div>
+
+                <div class="page" data-page = "2">
+                    <!-- Link to shift here -->
+                    <a href="#"></a>
+                </div>
+
+                <div class="page" data-page = "3">
+                    <!-- Link to Admin Page -->
+                </div>
+
+                <div class="page" data-page = "4">
+                    <!-- Link to the directory -->
+                    <p>
+                        hola
+                    </p>
+                </div>
+
+            </section>
+        </main>
+    </body>
+
+</html>
