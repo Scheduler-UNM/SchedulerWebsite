@@ -1,4 +1,4 @@
-ID	Name Position	Status	Hours Remaining
+SHIFT_ID	DAY TIME	POD	NO_OF_SCONS
 7	Monday	08:00-16:00	Pod A	24
 2	Monday	08:00-16:00	Pod B	74
 2 Monday	08:00-16:00	Pod C	79
