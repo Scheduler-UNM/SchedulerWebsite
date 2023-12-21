@@ -27,3 +27,11 @@ function switchPage(page_id)
     next_page.classList.add('is-active');
 
 }
+
+function changeIframe(pageType) {
+    // Get the iframe element
+    var iframe = document.getElementById('iframeContent');
+    
+    // Set the src attribute based on the button clicked
+    iframe.src = pageType;
+}
