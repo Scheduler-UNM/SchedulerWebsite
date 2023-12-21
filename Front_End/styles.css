@@ -66,6 +66,7 @@ header nav .tabs .tab:hover a[data-switcher]{
 }
 
 header nav .tabs .tab.is-active a[data-switcher]{
+    
     background-color: #f7a800;
     font-weight: 700;
 
@@ -77,6 +78,7 @@ main{
 }
 
 .pages{
+    /* height: 400px; */
     margin-top: 100px;
     padding: 50px 30px;
     border-radius: 8px;
@@ -89,6 +91,7 @@ main{
 }
 
 .pages .page.is-active{
+    height: 275px;
     display: block;
 }
 
@@ -97,8 +100,6 @@ table {
     width: 100%;
     border-collapse: collapse;
 }
-
-
 
 th{
     border: 1px solid black;
@@ -126,4 +127,22 @@ th {
     padding: 20px 160px; /* The first value is for top and bottom padding, increasing it will increase the height */
     text-align: left;
     
+}
+
+
+button{
+    font-size: 16px;
+    border-radius: 12px;
+    background-color: royalblue;
+    width: 16%;
+    box-shadow: 0px 3px 6px rgb(0,0,0.1);
+    border: 2px solid royalblue;
+    transition-duration: 0.4s;
+   
+}
+
+
+button:hover{
+    background-color: #f7a800;
+    border: 2px solid #f7a800;
 }

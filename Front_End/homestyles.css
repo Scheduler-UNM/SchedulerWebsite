@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+body{
+    background-color: #eee;
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+th{
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    min-width: 120px;
+    background-color: #FFF;
+}
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    min-width: 120px;
+    background-color: #FFF;
+    white-space: nowrap; /* Prevents text wrapping */
+    vertical-align: top; /* Aligns text to the top */
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+.time {
+    vertical-align: top;
+    padding: 20px 160px; /* The first value is for top and bottom padding, increasing it will increase the height */
+    text-align: left;
+    
+}
