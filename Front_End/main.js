@@ -1,47 +1,21 @@
-window.onload = () => {
-    const tab_switchers = document.querySelectorAll('[data-switcher]');
+document.addEventListener("DOMContentLoaded", function () {
+    var currentDate = new Date();
+    displayDate(currentDate);
 
-    for (let i = 0; i< tab_switchers.length; i++)
-    {
-        const tab_switcher = tab_switchers[i];
-        const page_id = tab_switcher.dataset.tab;
+    document.getElementById("prev-date").addEventListener("click", function () {
+        currentDate.setDate(currentDate.getDate() - 1);
+        displayDate(currentDate);
+    });
 
-        tab_switcher.addEventListener('click',() =>{
-            document.querySelector('.tabs .tab.is-active').classList.remove('is-active');
-            tab_switcher.parentNode.classList.add('is-active');
+    document.getElementById("next-date").addEventListener("click", function () {
+        currentDate.setDate(currentDate.getDate() + 1);
+        displayDate(currentDate);
+    });
 
-            switchPage(page_id);
+    function displayDate(date) {
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var formattedDate = date.toLocaleDateString('en-US', options);
 
-        });
+        document.getElementById("today-date").innerText = formattedDate;
     }
-
-}
-
-function switchPage(page_id)
-{
-    console.log(page_id);
-    const current_page = document.querySelector('.pages .page.is-active');
-    current_page.classList.remove('is-active');
-
-    const next_page = document.querySelector(`.pages .page[data-page = "${page_id}"]`);
-    next_page.classList.add('is-active');
-
-}
-
-function changeIframe(pageType) {
-
-    // Get the iframe element
-    var iframe = document.getElementById('iframeContent');
-    
-    // Set the src attribute based on the button clicked
-    iframe.src = pageType;
-}
-
-function changeIframeForAll(pageType) {
-
-    // Get the iframe element
-    var iframe = document.getElementById('iframeContentAll');
-    
-    // Set the src attribute based on the button clicked
-    iframe.src = pageType;
-}
+});
