@@ -29,8 +29,18 @@ function switchPage(page_id)
 }
 
 function changeIframe(pageType) {
+
     // Get the iframe element
     var iframe = document.getElementById('iframeContent');
+    
+    // Set the src attribute based on the button clicked
+    iframe.src = pageType;
+}
+
+function changeIframeForAll(pageType) {
+
+    // Get the iframe element
+    var iframe = document.getElementById('iframeContentAll');
     
     // Set the src attribute based on the button clicked
     iframe.src = pageType;
