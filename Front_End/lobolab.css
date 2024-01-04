@@ -238,8 +238,40 @@ header .calendar-current-date {
   color: white;
 }
 
-.locations a:hover,
+/* .locations a:hover,
 .locations a:active {
   background-color: #C00137;
+} */
+
+#lobolab{
+    background-color: #C00137;
 }
 
+
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th{
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    min-width: 120px;
+    background-color: #FFF;
+}
+td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    min-width: 120px;
+    background-color: #FFF;
+    white-space: nowrap; /* Prevents text wrapping */
+    vertical-align: top; /* Aligns text to the top */
+}
+
+th {
+    background-color: #f0f0f0;
+}

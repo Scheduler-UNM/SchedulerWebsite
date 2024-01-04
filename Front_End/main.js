@@ -140,6 +140,7 @@ const manipulate = () => {
 	// Update the text of the current date element 
 	// with the formatted current month and year
 	const formattedMonthYear = `${months[month]} ${year}`;
+	currdate.innerText = formattedMonthYear;
 
 
 	// update the HTML of the dates element 
