@@ -31,6 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     // currentDate.setDate(clickedDate);
                     selectedDate.setDate(new Date(year, month, clickedDate));
 
+					document.querySelectorAll(".calendar-dates li").forEach((dateElement) => {
+						dateElement.classList.remove("selected");
+					});
+			
+					// Add the "selected" class to the clicked date element
+					event.target.classList.add("selected");
+
                     // Update the displayed date
                     // displayDate(selectedDate);
 
