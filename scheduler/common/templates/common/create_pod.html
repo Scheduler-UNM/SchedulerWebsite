@@ -1,0 +1,36 @@
+<!-- create_pod.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Pod</title>
+    <!-- You can add more head elements like CSS here if needed -->
+</head>
+<body>
+    <h1>Create a New Pod</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label for="name">Pod Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="building">Building:</label><br>
+        <input type="text" id="building" name="building" required><br>
+
+        <label for="building_info">Building Info:</label><br>
+        <input type="text" id="building_info" name="building_info" required><br>
+
+        <label for="pod_supervisor">Pod Supervisor:</label><br>
+        <input type="text" id="pod_supervisor" name="pod_supervisor" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- Django messages -->
+    {% for message in messages %}
+        <script type="text/javascript">
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
+</body>
+</html>

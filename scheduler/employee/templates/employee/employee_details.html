@@ -1,0 +1,15 @@
+<!-- employee/templates/employee/employee_details.html -->
+
+<h2>Employee Details</h2>
+
+<p><strong>Name:</strong> {{ employee.name }}</p>
+<p><strong>Email:</strong> {{ employee.email }}</p>
+
+<h3>Shifts:</h3>
+<ul>
+    {% for shift in shifts %}
+    <li>{{ shift.start_time }} to {{ shift.end_time }}</li>
+    {% empty %}
+    <li>No shifts assigned.</li>
+    {% endfor %}
+</ul>

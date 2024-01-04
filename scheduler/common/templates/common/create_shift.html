@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Shift</title>
+    <!-- Add any additional CSS or JS you need -->
+</head>
+<body>
+    <h1>Create a New Shift</h1>
+    <form method="post" action="{% url 'create_shift' %}">
+        {% csrf_token %}
+
+        <label for="day">Day:</label><br>
+        <select id="day" name="day">
+            <option value="1">Monday</option>
+            <option value="2">Tuesday</option>
+            <option value="3">Wednesday</option>
+            <option value="4">Thursday</option>
+            <option value="5">Friday</option>
+            <option value="6">Saturday</option>
+            <option value="7">Sunday</option>
+        </select><br>
+
+        <label for="start_time">Start Time:</label><br>
+        <input type="time" id="start_time" name="start_time" required><br>
+
+        <label for="end_time">End Time:</label><br>
+        <input type="time" id="end_time" name="end_time" required><br>
+
+        <label for="pod">Pod:</label><br>
+        <!-- Assuming you have a way to list pods -->
+        <select id="pod" name="pod">
+            <!-- Dynamically populate with Pods -->
+            {% for pod in pods %}
+                <option value="{{ pod.id }}">{{ pod.name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <input type="checkbox" id="is_shift_available" name="is_shift_available">
+        <label for="is_shift_available">Is Shift Available</label><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
