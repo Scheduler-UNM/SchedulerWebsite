@@ -25,22 +25,26 @@ class Shift(models.Model):
         (6, 'Saturday'),
         (7, 'Sunday'),
     ]
+    AVAILABLE_CHOICES = [
+        (1, 'Available'),
+        (0, 'Unavailable'),
+    ]
     # Basic shift details
     day = models.IntegerField(choices=DAY_CHOICES, default=1)
     start_time = models.TimeField()
     end_time = models.TimeField()
     pod = models.ForeignKey('Pod', on_delete=models.CASCADE, related_name='shifts', null=True)
-    is_shift_available = models.BooleanField(default=True)
+    is_available = models.IntegerField(choices=AVAILABLE_CHOICES, default=1)
 
     def is_shift_available(self):
         # Method to check if the shift is available for assignment
-        return self.is_shift_available
+        return self.is_available
 
     # Additional methods for shift management can be added here
 
     def __str__(self):
         #return f'Shift at {self.pod} from {self.start_time} to {self.end_time}'
-        return f'Shift on {self.day} in {self.pod.name} from {self.start_time} to {self.end_time} and is_available={self.is_shift_available}'
+        return f'Shift on {self.day} in {self.pod.name} from {self.start_time} to {self.end_time} and is_available={self.is_available}'
 
 class ShiftRequest(models.Model):
     # Types of requests

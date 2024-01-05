@@ -27,18 +27,24 @@
         <input type="time" id="end_time" name="end_time" required><br>
 
         <label for="pod">Pod:</label><br>
-        <!-- Assuming you have a way to list pods -->
         <select id="pod" name="pod">
-            <!-- Dynamically populate with Pods -->
             {% for pod in pods %}
                 <option value="{{ pod.id }}">{{ pod.name }}</option>
             {% endfor %}
         </select><br>
 
-        <input type="checkbox" id="is_shift_available" name="is_shift_available">
-        <label for="is_shift_available">Is Shift Available</label><br>
+        <label for="is_shift_available">Is Shift Available:</label><br>
+        <select id="is_shift_available" name="is_shift_available">
+            <option value="1">Available</option>
+            <option value="0">Unavailable</option>
+        </select><br>
 
         <input type="submit" value="Submit">
     </form>
+    {% for message in messages %}
+        <script type="text/javascript">
+            alert("{{ message }}");
+        </script>
+    {% endfor %}
 </body>
 </html>
