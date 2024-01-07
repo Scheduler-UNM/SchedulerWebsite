@@ -8,14 +8,15 @@ from django.contrib import messages
 def create_pod(request):
     if request.method == "POST":
         # Extract data from the form
-        name = request.POST.get('name')
-        building = request.POST.get('building')
+        location_name = request.POST.get('location_name')
+        full_location = request.POST.get('full_location')
+        room_no = request.Post.get('room_no')
         building_info = request.POST.get('building_info')
         pod_supervisor = request.POST.get('pod_supervisor')
 
 
         # Create and save the new Pod object
-        new_pod = Pod(name=name, building=building, building_info=building_info, pod_supervisor=pod_supervisor)
+        new_pod = Pod(location_name=location_name, full_location=full_location, building_info=building_info,room_no=room_no, pod_supervisor=pod_supervisor,active=True)
         new_pod.save()
 
         messages.success(request, 'Pod was successfully added.')
@@ -29,11 +30,14 @@ def create_pod(request):
 @require_http_methods(["GET", "POST"])
 def create_shift(request):
     if request.method == "POST":
-        day = request.POST.get('day')
+        start_date=request.Post.get('start_date')
         start_time = request.POST.get('start_time')
         end_time = request.POST.get('end_time')
         pod_id = request.POST.get('pod')
-        is_available = int(request.POST.get('is_shift_available'))
+        shift_term = request.Post.get('shift_term')
+        shift_slots = request.Post.get('shift_slots')
+        shift_repeats = request.Post.get('shift_repeats')
+        
 
         try:
             pod = Pod.objects.get(id=pod_id)

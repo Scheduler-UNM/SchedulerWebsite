@@ -2,11 +2,22 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser,Group
 from django.conf import settings
 
+class Terms:
+    name = models.CharField(max_length = 100)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    status = models.IntegerField(default=1)
+
 
 class Pod(models.Model):
-    name = models.CharField(max_length=64)
-    building = models.CharField(max_length=64, default="unm")
-    building_info = models.CharField(max_length=64, default="null")
+    AVAILABLE_CHOICES = [
+        (1, 'ACTIVE')
+        (2, 'INACTIVE')
+    ]
+    location_name = models.CharField(max_length=32)
+    full_location_name = models.CharField(max_length=100)
+    building_info = models.IntegerField()
+    room_no = models.IntegerField()
     pod_supervisor = models.CharField(max_length=64, default="null")
     active = models.BooleanField(default=True)
 
@@ -26,15 +37,18 @@ class Shift(models.Model):
         (7, 'Sunday'),
     ]
     AVAILABLE_CHOICES = [
-        (1, 'Available'),
+        (1, 'Reserved'),
         (0, 'Unavailable'),
     ]
     # Basic shift details
-    day = models.IntegerField(choices=DAY_CHOICES, default=1)
+    start_date=models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
     pod = models.ForeignKey('Pod', on_delete=models.CASCADE, related_name='shifts', null=True)
-    is_available = models.IntegerField(choices=AVAILABLE_CHOICES, default=1)
+    shift_repeats=models.BooleanField(default=True)
+    shift_slots = models.IntegerField()
+    reserved_by = models.CharField(max_length=64)
+    shift_term = models.CharField()
 
     def is_shift_available(self):
         # Method to check if the shift is available for assignment

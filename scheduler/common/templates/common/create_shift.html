@@ -9,16 +9,8 @@
     <form method="post" action="{% url 'create_shift' %}">
         {% csrf_token %}
 
-        <label for="day">Day:</label><br>
-        <select id="day" name="day">
-            <option value="1">Monday</option>
-            <option value="2">Tuesday</option>
-            <option value="3">Wednesday</option>
-            <option value="4">Thursday</option>
-            <option value="5">Friday</option>
-            <option value="6">Saturday</option>
-            <option value="7">Sunday</option>
-        </select><br>
+        <label for="start_date">Start Day:</label><br>
+        <input type="date" id="start_date" name="start_date" required><br>
 
         <label for="start_time">Start Time:</label><br>
         <input type="time" id="start_time" name="start_time" required><br>
@@ -33,11 +25,14 @@
             {% endfor %}
         </select><br>
 
-        <label for="is_shift_available">Is Shift Available:</label><br>
-        <select id="is_shift_available" name="is_shift_available">
-            <option value="1">Available</option>
-            <option value="0">Unavailable</option>
-        </select><br>
+        <label for="shift_slots">Building:</label><br>
+        <input type="number" id="shift_slots" name="shift_slots" required><br>
+
+        <label for="shift_">Building:</label><br>
+        <input type="number" id="room_no" name="room_no" required><br>
+
+        <label for="shift_repeats">Building:</label><br>
+        <input type="number" id="shift_repeats" name="shift_repeats" required><br>
 
         <input type="submit" value="Submit">
     </form>

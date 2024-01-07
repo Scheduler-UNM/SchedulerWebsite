@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shift Selection</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto; /* Adjust the number of columns as needed */
+            padding: 10px;
+        }
+        .grid-item {
+            padding: 20px;
+            text-align: center;
+            border: 1px solid black;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select a Shift</h1>
+    <div class="grid-container">
+        {% for shift in shifts %}
+            <!-- Ensure the URL is correctly formed -->
+            <div class="grid-item" onclick="window.location.href='{% url 'shift_detail' shift.id %}'">
+                <p>Day: {{ shift.get_day_display }}</p>
+                <p>Time: {{ shift.start_time }} - {{ shift.end_time }}</p>
+                <p>Pod: {{ shift.pod.name }}</p>
+                <p>Status: {{ 'Available' if shift.is_shift_available else 'Unavailable' }}</p>
+            </div>
+        {% empty %}
+            <p>No shifts available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
