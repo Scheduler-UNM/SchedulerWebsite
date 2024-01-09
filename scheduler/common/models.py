@@ -1,25 +1,30 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser,Group
 from django.conf import settings
+from employee.models import employee
+from datetime import date
 
-class Terms:
+class Terms(models.Model):
     name = models.CharField(max_length = 100)
     start_date = models.DateField()
     end_date = models.DateField()
     status = models.IntegerField(default=1)
 
+    def __str__(self):
+        return f'Term {self.name} begining from {self.start_date} and ending at {self.end_date}'
+
 
 class Pod(models.Model):
     AVAILABLE_CHOICES = [
-        (1, 'ACTIVE')
-        (2, 'INACTIVE')
+        (1, 'ACTIVE'),
+        (2, 'INACTIVE'),
     ]
-    location_name = models.CharField(max_length=32)
-    full_location_name = models.CharField(max_length=100)
+    location_name = models.CharField(max_length=32,default='NULL')
+    full_location_name = models.CharField(max_length=100,default='NULL')
     building_info = models.IntegerField()
-    room_no = models.IntegerField()
+    room_no = models.IntegerField(default=1)
     pod_supervisor = models.CharField(max_length=64, default="null")
-    active = models.BooleanField(default=True)
+    active = models.IntegerField(choices=AVAILABLE_CHOICES, default=1)
 
     def __str__(self):
         return f'Pod {self.name} at Building{self.building} supervised by {self.pod_supervisor}'
@@ -41,14 +46,14 @@ class Shift(models.Model):
         (0, 'Unavailable'),
     ]
     # Basic shift details
-    start_date=models.DateField()
+    start_date=models.DateField(default=date(2000,1,1))
     start_time = models.TimeField()
     end_time = models.TimeField()
     pod = models.ForeignKey('Pod', on_delete=models.CASCADE, related_name='shifts', null=True)
     shift_repeats=models.BooleanField(default=True)
-    shift_slots = models.IntegerField()
-    reserved_by = models.CharField(max_length=64)
-    shift_term = models.CharField()
+    shift_slots = models.IntegerField(default=16)
+    reserved_by = models.ForeignKey(employee, on_delete=models.SET_NULL, null=True, blank=True, related_name='reserved_shifts')
+    shift_term = models.ForeignKey(Terms, on_delete=models.CASCADE, related_name='shifts', null=True)
 
     def is_shift_available(self):
         # Method to check if the shift is available for assignment

@@ -9,6 +9,13 @@
     <form method="post" action="{% url 'create_shift' %}">
         {% csrf_token %}
 
+        <label for="pod">Pod:</label><br>
+        <select id="pod" name="pod">
+            {% for pod in pods %}
+                <option value="{{ pod.id }}">{{ pod.name }}</option>
+            {% endfor %}
+        </select><br>
+
         <label for="start_date">Start Day:</label><br>
         <input type="date" id="start_date" name="start_date" required><br>
 
@@ -18,22 +25,24 @@
         <label for="end_time">End Time:</label><br>
         <input type="time" id="end_time" name="end_time" required><br>
 
-        <label for="pod">Pod:</label><br>
-        <select id="pod" name="pod">
-            {% for pod in pods %}
-                <option value="{{ pod.id }}">{{ pod.name }}</option>
+        <label for="shift_term">Shift Term:</label><br>
+        <select id="shift_term" name="shift_term" required>
+            
+            {% for term in terms %}
+            <option value="{{ term.id }}">{{ term.name }}</option>
             {% endfor %}
         </select><br>
 
-        <label for="shift_slots">Building:</label><br>
+        <label for="shift_repeats">Shift Repeats:</label><br>
+        <select id="shift_repeats" name="shift_repeats" required>
+            <option value="">None</option>
+            <option value="weekly">Weekly</option>
+        </select><br>
+        
+
+        <label for="shift_slots">Shift Slots:</label><br>
         <input type="number" id="shift_slots" name="shift_slots" required><br>
-
-        <label for="shift_">Building:</label><br>
-        <input type="number" id="room_no" name="room_no" required><br>
-
-        <label for="shift_repeats">Building:</label><br>
-        <input type="number" id="shift_repeats" name="shift_repeats" required><br>
-
+        
         <input type="submit" value="Submit">
     </form>
     {% for message in messages %}

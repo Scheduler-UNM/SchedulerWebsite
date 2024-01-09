@@ -14,17 +14,21 @@
         <label for="location_name">Location Name:</label><br>
         <input type="text" id="location_name" name="location_name" required><br>
 
-        <label for="full_location">Full Location:</label><br>
+        <label for="full_location">Full Location Name:</label><br>
         <input type="text" id="full_location" name="full_location" required><br>
 
-        <label for="building_info">Building:</label><br>
+        <label for="building_info">Building Info:</label><br>
         <input type="number" id="building_info" name="building_info" required><br>
 
-        <label for="room_no">Building:</label><br>
+        <label for="room_no">Room no:</label><br>
         <input type="number" id="room_no" name="room_no" required><br>
 
         <label for="pod_supervisor">Pod Supervisor:</label><br>
-        <input type="text" id="pod_supervisor" name="pod_supervisor" required><br>
+        <select id="pod_supervisor" name="pod_supervisor" required>
+            {% for employee in employees %}
+                <option value="{{ employee.id }}">{{ employee.name }}</option>
+            {% endfor %}
+        </select><br>
 
         <input type="submit" value="Submit">
     </form>

@@ -1,8 +1,10 @@
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
-from .models import Pod, Shift
+from .models import Pod, Shift, Terms
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 
 @require_http_methods(["GET", "POST"])
 def create_pod(request):
@@ -46,11 +48,14 @@ def create_shift(request):
             return redirect('create_shift')
 
         new_shift = Shift(
-            day=day,
+            start_date=start_date,
             start_time=start_time,
             end_time=end_time,
             pod=pod,
-            is_available=is_available
+            shift_repeats=shift_repeats,
+            shift_term=shift_term,
+            shift_slots=shift_slots,
+
         )
         new_shift.save()
 
@@ -62,3 +67,21 @@ def create_shift(request):
         return render(request, 'common/create_shift.html', {'pods': pods})
 
 
+
+@csrf_exempt  # This decorator is for demonstration purposes, consider CSRF protection for production
+def save_terms(request):
+    if request.method == 'POST':
+        # Extract data from the form
+        name = request.POST.get('name')
+        start_date = request.POST.get('start_date')
+        end_date = request.POST.get('end_date')
+
+        # Create a new Terms instance and save it to the database
+        term = Terms(name=name, start_date=start_date, end_date=end_date)
+        term.save()
+
+        # Redirect or send a response after saving
+        return HttpResponse("Terms saved successfully.")
+    else:
+        # If not a POST request, just render the form
+        return render(request, 'create_term.html')
