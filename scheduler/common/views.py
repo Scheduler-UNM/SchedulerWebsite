@@ -81,7 +81,7 @@ def save_terms(request):
         term.save()
 
         # Redirect or send a response after saving
-        return HttpResponse("Terms saved successfully.")
+        return redirect('create_terms')
     else:
         # If not a POST request, just render the form
-        return render(request, 'create_term.html')
+        return render(request, 'common/create_term.html')

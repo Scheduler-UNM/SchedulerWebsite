@@ -1,25 +1,40 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import employee
+from .models import employee, Access
 
+def add_employee(request):
+    if request.method == 'POST':
+        # Extract data from the form
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        password = request.POST['password']
+        email = request.POST['email']
+        unmid = request.POST['unmid']
+        phonenumber = request.POST['phonenumber']
+        access_ids = request.POST.getlist('access')  # This will be a list of Access IDs
 
-def index(request):
-    # Assuming there's an employee profile with id=1
-    profile = get_object_or_404(employee, id=1)
-    return HttpResponse(str(profile))
+        # Create a new employee instance
+        new_employee = employee(
+            first_name=first_name,
+            last_name=last_name,
+            password=password,
+            email=email,
+            unmid=unmid,
+            phonenumber=phonenumber,
+        )
+        new_employee.save()  # Save the employee to generate an ID
 
+        # Set the access values
+        for access_id in access_ids:
+            access_choices = Access.objects.all()
+            print(access_choices)
+            return render(request, 'employee/create_employee.html', {'access_choices': access_choices})
 
-def employee_details(request, employee_id):
-    # Fetch the employee by ID or return 404 if not found
-    employee_instance = get_object_or_404(employee, id=employee_id)
+        # Redirect to a success page or show a success message
+        return HttpResponse("Employee added successfully")
+    else:
+        # If not a POST request, just render the form
+        # Fetch all Access objects to pass to the template
+        access_choices = Access.objects.all()
+        return render(request, 'employee/create_employee.html', {'access_choices': access_choices})
 
-    # Fetch shifts related to the employee
-    shifts = employee_instance.shifts.all()
-
-    # Pass the employee and shifts to the template
-    context = {
-        'employee': employee_instance,
-        'shifts': shifts,
-    }
-
-    return render(request, 'employee/employee_details.html', context)

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Terms Form</title>
+</head>
+<body>
+
+<h2>Terms Form</h2>
+
+<form action="{% url 'save_terms' %}" method="post">
+    {% csrf_token %}
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" maxlength="100" required><br>
+
+    <label for="start_date">Start Date:</label><br>
+    <input type="date" id="start_date" name="start_date" required><br>
+
+    <label for="end_date">End Date:</label><br>
+    <input type="date" id="end_date" name="end_date" required><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
