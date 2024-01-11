@@ -53,4 +53,7 @@ The `employee` app handles functionalities related to employees and their access
 - The current HTML templates are for initial testing and likely need further modifications.
 
 
+# SchedulerWebsite
+This is a basic django python-mysql based scheduleing application simulator, which will eventually expand into a website with HTML5, CSS3 and JS on the frontend.
+
 
